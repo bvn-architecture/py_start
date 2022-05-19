@@ -46,7 +46,7 @@ Copy the following lines into your terminal:
 
 cd ..\\{project_name}
 python -m venv {venv_name}
-yoo-env\\Scripts\\activate.bat
+{venv_name}\\Scripts\\activate.bat
 echo "🚪"
 python -m pip install --upgrade pip
 python -m pip install pip-tools
@@ -54,5 +54,8 @@ pip-compile requirements.in
 echo "🚀"
 pip install -r requirements.txt
 git init
+echo "🍟🍟🍟"
+#
+
 """
 )
