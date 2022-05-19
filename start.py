@@ -41,7 +41,9 @@ with open(
 # TODO: implement these in code
 print(
     f"""
-Next jobs:
+Next jobs
+Copy the following lines into your terminal:
+
 cd ..\\{project_name}
 python -m venv {venv_name}
 yoo-env\\Scripts\\activate.bat
@@ -51,5 +53,6 @@ python -m pip install pip-tools
 pip-compile requirements.in
 echo "🚀"
 pip install -r requirements.txt
+git init
 """
 )
