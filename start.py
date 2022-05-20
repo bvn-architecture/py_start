@@ -3,11 +3,14 @@ import requests
 
 
 project_name = input("what do you want to call this project?\n:")
-print(
-    "what shall we call the virtual environment for this project?"
-    f"e.g. {project_name[:3]}-env"
-)
-venv_name = input("venv name: ")
+print("what shall we call the virtual environment for this project?")
+venv_name = f"{project_name[:3]}-env"
+venv_check = input(f"Are you are ok with {venv_name}? (Y/n)").upper()
+if venv_check == "" or "Y" in venv_check:
+    print("very cool venv name")
+else:
+    venv_name = input("venv name: ")
+
 requirements = """
 black
 git+https://github.com/notionparallax/pytestgen.git
@@ -47,6 +50,10 @@ Next jobs
 Copy the following lines into your terminal:
 
 cd ..\\{project_name}
+code . -r
+
+then stop and paste this lot:
+
 python -m venv {venv_name}
 {venv_name}\\Scripts\\activate.bat
 echo "🚪"
@@ -57,7 +64,6 @@ echo "🚀"
 pip install -r requirements.txt
 git init
 echo "🍟🍟🍟"
-code . -r
 #
 
 """
