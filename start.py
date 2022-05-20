@@ -10,6 +10,8 @@ print(
 venv_name = input("venv name: ")
 requirements = """
 black
+git+https://github.com/notionparallax/pytestgen.git
+pytest
 wheel
 """
 print("is this a data project? (adds pandas and that kind of thing)")
