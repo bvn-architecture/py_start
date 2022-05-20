@@ -57,6 +57,7 @@ echo "🚀"
 pip install -r requirements.txt
 git init
 echo "🍟🍟🍟"
+code . -r
 #
 
 """
