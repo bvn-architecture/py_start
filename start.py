@@ -18,8 +18,8 @@ mypy
 pytest
 wheel
 """
-print("is this a data project? (adds pandas and that kind of thing)")
-is_data = input("(Y,n): ")
+
+is_data = input("is this a data project? (adds pandas and that kind of thing) (Y,n): ")
 if "Y" in is_data.upper() or is_data == "":
     requirements += "\n".join(["pandas", "ipykernel", "matplotlib", "numpy"])
 
