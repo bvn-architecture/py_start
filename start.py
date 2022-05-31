@@ -14,6 +14,7 @@ else:
 requirements = """
 black
 git+https://github.com/notionparallax/pytestgen.git
+mypy
 pytest
 wheel
 """
