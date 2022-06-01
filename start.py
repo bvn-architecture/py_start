@@ -45,8 +45,7 @@ with open(
     req_f.write(py_gitignore)
 
 # TODO: implement these in code
-print(
-    f"""
+message = f"""
 Next jobs
 Copy the following lines into your terminal:
 
@@ -57,17 +56,31 @@ Then stop and paste this lot:
 ⚠ VS Code notices that a new venv is created, and does some admin.
 ⚠ It really helps to have that, so do this once the window has settled fully.
 
-python -m venv --copies {venv_name}
-{venv_name}\\Scripts\\activate.bat
-echo "🚪"
-python -m pip install --upgrade pip
-python -m pip install pip-tools
-pip-compile requirements.in
-echo "🚀"
-pip install -r requirements.txt
-git init
-echo "🍟🍟🍟"
-#
-
 """
-)
+commands = [
+    # Make a new virtual environment. This uses --copies because the BVN
+    # environment seems to break whenever there's a new image made. This is
+    # trying to prevent that by reducing the use of symlinks.
+    f"python -m venv --copies {venv_name}",
+    # Activate that environment
+    f"{venv_name}\\Scripts\\activate.bat",
+    'echo "🚪"',
+    # Upgrade pip, it's usually a few versions behind at this point
+    "python -m pip install --upgrade pip",
+    # Install pip-tools https://github.com/jazzband/pip-tools
+    # This is what allows us to do pip-compile
+    "python -m pip install pip-tools",
+    # Compile the requirements.in into a well anotated requirements.txt
+    # NOTE: pip-compile won't work if you're not in a venv
+    "pip-compile requirements.in",
+    'echo "🚀"',
+    # install all the base requirements
+    "pip install -r requirements.txt",
+    # Initialise this folder as a git repo
+    "git init",
+    'echo "🍟🍟🍟"',
+    # An empty line to make sure that the last line gets excecuted
+    "#",
+]
+
+print(message + commands)
