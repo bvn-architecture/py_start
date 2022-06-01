@@ -53,7 +53,9 @@ Copy the following lines into your terminal:
 cd ..\\{project_name}
 code .
 
-then stop and paste this lot:
+Then stop and paste this lot:
+⚠ VS Code notices that a new venv is created, and does some admin.
+⚠ It really helps to have that, so do this once the window has settled fully.
 
 python -m venv --copies {venv_name}
 {venv_name}\\Scripts\\activate.bat
