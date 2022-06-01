@@ -55,7 +55,7 @@ code . -r
 
 then stop and paste this lot:
 
-python -m venv {venv_name}
+python -m venv --copies {venv_name}
 {venv_name}\\Scripts\\activate.bat
 echo "🚪"
 python -m pip install --upgrade pip
