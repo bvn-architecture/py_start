@@ -51,7 +51,7 @@ Next jobs
 Copy the following lines into your terminal:
 
 cd ..\\{project_name}
-code . -r
+code .
 
 then stop and paste this lot:
 
