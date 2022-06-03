@@ -11,17 +11,29 @@ if venv_check == "" or "Y" in venv_check:
 else:
     venv_name = input("venv name: ")
 
-requirements = """
-black
-git+https://github.com/notionparallax/pytestgen.git
-mypy
-pytest
-wheel
-"""
+requirements = "\n".join(
+    [
+        "black"
+        "git+https://github.com/notionparallax/pytestgen.git"
+        "mypy"
+        "mypy"
+        "pytest"
+        "wheel"
+    ]
+)
+
 
 is_data = input("is this a data project? (adds pandas and that kind of thing) (Y,n): ")
 if "Y" in is_data.upper() or is_data == "":
-    requirements += "\n".join(["pandas", "ipykernel", "matplotlib", "numpy"])
+    requirements += "\n".join(
+        [
+            "pandas",
+            "ipykernel",
+            "matplotlib",
+            "numpy",
+            "pandas-stubs",
+        ]
+    )
 
 
 try:
