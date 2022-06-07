@@ -13,12 +13,13 @@ else:
 
 requirements = "\n".join(
     [
-        "black"
-        "git+https://github.com/notionparallax/pytestgen.git"
-        "mypy"
-        "mypy"
-        "pytest"
-        "wheel"
+        "black",
+        "git+https://github.com/notionparallax/pytestgen.git",
+        "mypy",
+        "pytest",
+        "wheel",
+        "bvn_values",
+        "",
     ]
 )
 
