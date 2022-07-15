@@ -1,6 +1,8 @@
 import os
 import requests
 
+make_module_file_structure = False
+module_commands = []
 
 project_name = input("what do you want to call this project?\n:")
 print("what shall we call the virtual environment for this project?")
@@ -36,11 +38,51 @@ if "Y" in is_data.upper() or is_data == "":
         ]
     )
 
+is_module = input(
+    "is this project going to be a module on pypi?\n"
+    "(sets up a folder structure and adds a few more requirements) (y,N): "
+)
+if "Y" in is_module.upper():
+    requirements += "\n".join(["build", "twine", "flit"])
+    make_module_file_structure = True
 
 try:
     os.mkdir(os.path.normpath(f"..\\{project_name}"))
 except FileExistsError:
     pass  # all good, probably offer to overwrite one day?
+if make_module_file_structure:
+    # os.mkdir() src
+    # os.mkdir() src/f"{project_name}""
+    f"""
+    {project_name}/
+    │
+    ├── src/
+    │   └── {project_name}/
+    │       ├── __init__.py
+    │       ├── __main__.py
+    │       ├── exampleA.py
+    │       └── exampleB.py
+    │
+    ├── tests/
+    │   ├── test_feed.py   TODO: eventually
+    │   └── test_viewer.py TODO: eventually
+    │
+    ├── LICENSE
+    ├── README.md
+    └── pyproject.toml
+    """
+    # etc. by making an example set of files in this repo, and then copying them across
+    init_py_contents = (
+        # Write a docstring and a version number (0.1.0) to the __init__.py file
+        '''"""This is the description of your project that will show up on pypi."""'''
+        '\n__version=__version__ = "0.1.1"'
+        "\n# importing these here makes them avaliable to the dir command"
+        "\nfrom .exampleA import a"
+        "\nfrom .exampleB import b"
+    )
+    readme_contents = f"# {project_name}\n\nTell us things about this project!"
+    # Add instruction for flit init to module_commands
+    #
 
 with open(
     os.path.normpath(f"..\\{project_name}\\requirements.in"), "w", encoding="utf-8"
@@ -96,6 +138,7 @@ commands = "\n".join(
         # An empty line to make sure that the last line gets excecuted
         "#",
     ]
-)
+) + "\n".join(module_commands)
+
 
 print(message + commands)
