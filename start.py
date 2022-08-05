@@ -35,6 +35,7 @@ if "Y" in is_data.upper() or is_data == "":
             "matplotlib",
             "numpy",
             "pandas-stubs",
+            "openpyxl",
         ]
     )
 
