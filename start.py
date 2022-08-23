@@ -46,6 +46,10 @@ if "Y" in is_module.upper():
     requirements += "\n".join(["build", "twine", "flit"])
     make_module_file_structure = True
 
+want_example = input("Do you want an example project? (Y,n): ")
+if "Y" in want_example.upper():
+    print("this is coming soon!   👀")
+
 try:
     os.mkdir(os.path.normpath(f"..\\{project_name}"))
 except FileExistsError:
