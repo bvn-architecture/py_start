@@ -1,11 +1,12 @@
 import os
+
 try:
     import requests
 except:
     print(
         "\nIt looks like you don't have requests installed, to install it: \n\n",
         "pip install requests \n\n",
-        "and run this file again.\n"
+        "and run this file again.\n",
     )
     exit()
 
