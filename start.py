@@ -50,6 +50,14 @@ if "Y" in is_module.upper():
 want_example = input("Do you want an example project? (Y,n): ")
 if "Y" in want_example.upper():
     print("this is coming soon!   👀")
+    # pseudocode:
+    # make a tests folder
+    # copy starter_project\starter_test.py to it
+    # copy starter_project\starter_file.py to the project root
+    # print some instructions on how to use it
+    #   go to the tests tab on the left, set it up to use pytest, and the tests
+    #   folder, use the tests in the bottom half of the panel, run the test, be
+    #   happy, see ✔✔✔
 
 try:
     os.mkdir(os.path.normpath(f"..\\{project_name}"))
