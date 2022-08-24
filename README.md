@@ -36,6 +36,16 @@ It'll:
 
 Give it a go!
 
+## Some pointers 
+
+For using your new venv:
+1. It's a virtual environment, so you can run specific versions of libraries in isolation of other libraries you may have
+1. This is an ideal workaround for if you're having difficulties with your virtual machine environment where you are unable to use pip when Using Path Variable(s)
+1. A few ways you can activate a venv: `venv\Scripts\Activate.ps1`, or, `Ctrl+Shift+P` Selecting `Python Select Interpreter` then opening a new terminal.
+1. If using VS code, you can quickly check that the venv is active by the green text with the active venv name in the terminal. 
+1. Check that it's not defaulting to another venv by accident if you have multiple venv
+1. Make sure you install the library you need into the venv, else it won't work!
+
 ## Contributing
 
 This project is super young, so there's nothing formal to do. Just hack away and submit a PR, or open an issue and I'll see what I can do.
