@@ -12,7 +12,7 @@ except:
 
 make_module_file_structure = False
 module_commands = []
-requirements = ""
+required_modules = ""
 
 
 def maybe_add_data_project_things():
@@ -20,7 +20,8 @@ def maybe_add_data_project_things():
         "is this a data project? (adds pandas and that kind of thing) (Y,n): "
     )
     if "Y" in is_data.upper() or is_data == "":
-        requirements += "\n".join(
+        global required_modules
+        required_modules += "\n".join(
             [
                 "pandas",
                 "ipykernel",
@@ -33,12 +34,13 @@ def maybe_add_data_project_things():
 
 
 def maybe_add_module_things(project_name):
+    global make_module_file_structure
     is_module = input(
         "is this project going to be a module on pypi?\n"
-        "(sets up a folder structure and adds a few more requirements) (y,N): "
+        "(sets up a folder structure and adds a few more requirements) (y/N): "
     )
     if "Y" in is_module.upper():
-        requirements += "\n".join(["build", "twine", "flit"])
+        required_modules += "\n".join(["build", "twine", "flit"])
         make_module_file_structure = True
 
     try:
@@ -118,7 +120,7 @@ def main():
     else:
         venv_name = input("venv name: ")
 
-    requirements += "\n".join(
+    main_modules = "\n".join(
         [
             "black",
             "git+https://github.com/notionparallax/pytestgen.git",
@@ -129,6 +131,8 @@ def main():
             "",
         ]
     )
+    global required_modules
+    required_modules = required_modules + main_modules
 
     maybe_add_data_project_things()
 
@@ -136,10 +140,9 @@ def main():
 
     maybe_add_example_project_things(project_name)
 
-    with open(
-        os.path.normpath(f"..\\{project_name}\\requirements.in"), "w", encoding="utf-8"
-    ) as req_f:
-        req_f.write(requirements)
+    req_in = os.path.normpath(f"..\\{project_name}\\requirements.in")
+    with open(req_in, "w", encoding="utf-8") as req_f:
+        req_f.write(required_modules)
 
     py_gitignore = requests.get(
         "https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore"
